@@ -1,13 +1,11 @@
 public class Cd
 {
   private String nomeCd;
-  private int annoCd;
-  private String genereCd;
-  private String artistaCd;
-  public Cd(String nomeCd,int annoCd,String genereCd,String artistaCd)// costruttore
+  private Genere genereCd;
+  private Artista artistaCd;
+  public Cd(String nomeCd,Genere genereCd,Artista artistaCd)// costruttore
   {
     this.nomeCd=nomeCd;
-    this.annoCd=annoCd;
     this.genereCd=genereCd;
     this.artistaCd=artistaCd;
   }
@@ -16,15 +14,12 @@ public class Cd
   {
   	return nomeCd;
   }
-  public int getAnnoCd()
-  {
-  	return annoCd;
-  }
-  public String getGenereCd()
+  
+  public Genere getGenereCd()
   {
   	return genereCd;
   }
-  public String getArtistaCd()
+  public Artista getArtistaCd()
   {
   	return artistaCd;
   }
@@ -32,7 +27,6 @@ public class Cd
   public void StampaInfoCd()
   {
   	System.out.println("Nome cd: " + getNomecd());
-  	System.out.println("Anno: " + getAnnoCd());
   	System.out.println("Genere: " + getGenereCd());
   	System.out.println("Artista: " + getArtistaCd());
   }
