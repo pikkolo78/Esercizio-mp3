@@ -1,11 +1,11 @@
 public class Genere
 {
-	private String genere;
+    private String genere;
 	public Genere(String genere)
 	{
 		this.genere=genere;
 	}
-	public String getGenere()
+	public String getNomeGenere()
 	{
 		return genere;
 	}
