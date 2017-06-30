@@ -8,15 +8,15 @@ public class ArchivioMp3
 
     public void aggiungiArtista(String nomeArtista)
     {  
-    	Artista art=null;// puntatore creato solo per fare un if sulla creazione del nuovo oggetto
+    	Artista artistaMomentaneo=null;// puntatore creato solo per fare un if sulla creazione del nuovo oggetto
     	for ( Artista artista1:artisti )// si crea un for dv usciamo singolarmente l'oggetto
     	{
     	   if(artista1.getNome().equals(nomeArtista))//tramite il metodo della classe artisti ne prendiamo il nome e lo compariamo a quello passato al metodo "aggiunggi artista"
             {
-               art=artista1;// se è uguale puntatore art diventera artista alrimenti restera' "null" e il programma andra' avanti e non creera' nessun oggetto artista in quanto gia presente in archivio
+               artistaMomentaneo=artista1;// se è uguale puntatore art diventera artista alrimenti restera' "null" e il programma andra' avanti e non creera' nessun oggetto artista in quanto gia presente in archivio
     	    }
         }
-        if (art==null)// se art è "null" quindi nel precedente "for",e if nn si è verificata la condizione,
+        if (artistaMomentaneo==null)// se artistaMomentaneo è "null" quindi nel precedente "for",e if nn si è verificata la condizione,
         { 
 
         Artista nuovoArtista= new Artista(nomeArtista);//creiamo l'oggetto artista, in quanto in archivio non è presente l'artista 
@@ -25,21 +25,55 @@ public class ArchivioMp3
     }
     public void aggiungiGenereCd(String genereCd)
     {
-    	Genere genere1=null;
-      for ( Genere nuovoGenere:generi ) 
+    	Genere genereMomentaneo=null;
+      for ( Genere Genere1:generi ) 
       {
-      	if(nuovoGenere.get.nomeGenere.equals(genereCd))
+      	if(Genere1.get.nomeGenere.equals(genereCd))
       	{
-           genere1=nuovo genere;
+           genereMomentaneo=genere1;
       	}
       }
-      if(genere1 == null)
+      if(genereMomentaneo == null)
       {
-      	Genere nuovoGenere= new Genere(String nomeGenere);
+      	Genere nuovoGenere= new Genere(genereCd);
       	generi.add(nuovoGenere);
       }
+   
+    public void aggiungiCd(String nomeCd)
+    {
+    	Cd cdMomentaneo=null;
+    	for ( Cd Cd1: cd) 
+    	{
+    		if (Cd1.getNome().equals(nomeCd)) 
+    		{
+    			cdMomentaneo =Cd1;
+    		}
 
+    	}
+    	if (cdMomentaneo == null) 
+    	{
+    		Cd nuovocd =new Cd(nomeCd);
+    		cd.add(nuovocd);
+    	}
     }
+    public void aggiungiNuovoBrano(int durataBrano,String nomeBrano,Cd appartenenza)
+    {
+    	Brano branoMomentaneo=null;
+    	for ( Brano brano1:brani ) 
+    	{
+    		if (brano1.getNome().equals(nomeBrano)) 
+    		{
+    			branoMomentaneo=brano1;
+    		}
+    	}
+    	if (branoMomentaneo== null) 
+    	{
+    		Brano nuovoBrano=new Brano(durataBrano,nomeBrano,appartenenza)
+    		brani.add(nuovoBrano);
+    	}
+    	
+    }
+
 
 
 
