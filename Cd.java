@@ -10,7 +10,7 @@ public class Cd
     this.artistaCd=artistaCd;
   }
 
-  public String getNomecd()// metodi get
+  public String getNomeCd()// metodi get
   {
   	return nomeCd;
   }
@@ -24,11 +24,10 @@ public class Cd
   	return artistaCd;
   }
 
-  public void StampaInfoCd()
+  public void stampaInfoCd()
   {
-  	System.out.println("Nome cd: " + getNomecd());
-  	System.out.println("Genere: " + getGenereCd());
-  	System.out.println("Artista: " + getArtistaCd());
+  	System.out.println("Nome cd: " + getNomeCd()+","+"Genere: " + getGenereCd().getNomeGenere()+"," + "Artista: " + getArtistaCd().getNomeArtista());
+  	
   }
 
 

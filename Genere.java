@@ -11,6 +11,6 @@ public class Genere
 	}
 	public void stampaInfoGenere()
 	{
-		System.out.println("Genere: " + getGenere());
+		System.out.println("Genere: " + getNomeGenere());
 	}
 }

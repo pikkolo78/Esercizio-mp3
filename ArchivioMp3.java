@@ -1,4 +1,4 @@
-import java.util.ArrayList
+import java.util.ArrayList;
 public class ArchivioMp3
 {
  ArrayList<Cd> cd = new ArrayList<Cd>();
@@ -6,12 +6,12 @@ public class ArchivioMp3
    ArrayList<Artista> artisti = new ArrayList<Artista>();
     ArrayList<Brano> brani = new ArrayList<Brano>();
 
-    public void aggiungiArtista(String nomeArtista)
+    public Artista aggiungiArtista(String nomeArtista)
     {  
     	Artista artistaMomentaneo=null;// puntatore creato solo per fare un if sulla creazione del nuovo oggetto
     	for ( Artista artista1:artisti )// si crea un for dv usciamo singolarmente l'oggetto
     	{
-    	   if(artista1.getNome().equals(nomeArtista))//tramite il metodo della classe artisti ne prendiamo il nome e lo compariamo a quello passato al metodo "aggiunggi artista"
+    	   if(artista1.getNomeArtista().equalsIgnoreCase(nomeArtista))//tramite il metodo della classe artisti ne prendiamo il nome e lo compariamo a quello passato al metodo "aggiunggi artista"
             {
                artistaMomentaneo=artista1;// se è uguale puntatore art diventera artista alrimenti restera' "null" e il programma andra' avanti e non creera' nessun oggetto artista in quanto gia presente in archivio
     	    }
@@ -21,14 +21,20 @@ public class ArchivioMp3
 
         Artista nuovoArtista= new Artista(nomeArtista);//creiamo l'oggetto artista, in quanto in archivio non è presente l'artista 
         artisti.add(nuovoArtista);//e aggiungiamo l oggetto artista all array list di competenza
+        return nuovoArtista;
         }
+        else 
+        {
+        	return artistaMomentaneo;
+        }
+
     }
-    public void aggiungiGenereCd(String genereCd)
+    public Genere aggiungiGenereCd(String genereCd)
     {
     	Genere genereMomentaneo=null;
-      for ( Genere Genere1:generi ) 
+      for ( Genere genere1:generi ) 
       {
-      	if(Genere1.get.nomeGenere.equals(genereCd))
+      	if(genere1.getNomeGenere().equals(genereCd))
       	{
            genereMomentaneo=genere1;
       	}
@@ -37,23 +43,34 @@ public class ArchivioMp3
       {
       	Genere nuovoGenere= new Genere(genereCd);
       	generi.add(nuovoGenere);
+      	return nuovoGenere;
       }
+      else
+      {
+      	return genereMomentaneo;
+      }
+    }
    
-    public void aggiungiCd(String nomeCd)
+    public Cd aggiungiCd(String nomeCd,Genere genereCd,Artista artistaCd)
     {
     	Cd cdMomentaneo=null;
-    	for ( Cd Cd1: cd) 
+    	for ( Cd cd1: cd) 
     	{
-    		if (Cd1.getNome().equals(nomeCd)) 
+    		if (cd1.getNomeCd().equals(nomeCd) && cd1.getArtistaCd()==artistaCd) 
     		{
-    			cdMomentaneo =Cd1;
+    			cdMomentaneo =cd1;
     		}
 
     	}
     	if (cdMomentaneo == null) 
     	{
-    		Cd nuovocd =new Cd(nomeCd);
-    		cd.add(nuovocd);
+    		Cd nuovoCd =new Cd(nomeCd,genereCd,artistaCd);
+    		cd.add(nuovoCd);
+    		return nuovoCd;
+    	}
+    	else
+    	{
+    		return cdMomentaneo;
     	}
     }
     public void aggiungiNuovoBrano(int durataBrano,String nomeBrano,Cd appartenenza)
@@ -61,17 +78,33 @@ public class ArchivioMp3
     	Brano branoMomentaneo=null;
     	for ( Brano brano1:brani ) 
     	{
-    		if (brano1.getNome().equals(nomeBrano)) 
+    		if (brano1.getNomeBrano().equals(nomeBrano) && brano1.getCdBrano()==appartenenza) 
     		{
     			branoMomentaneo=brano1;
     		}
     	}
     	if (branoMomentaneo== null) 
     	{
-    		Brano nuovoBrano=new Brano(durataBrano,nomeBrano,appartenenza)
+    		Brano nuovoBrano=new Brano(durataBrano,nomeBrano,appartenenza);
     		brani.add(nuovoBrano);
     	}
     	
+    }
+    public void stampaInfoCd()
+    {
+         for ( Cd infoCd: cd) 
+         {
+         	infoCd.stampaInfoCd();
+         	for (Brano brano : brani) 
+         	{
+         		if (brano.getCdBrano() == infoCd ) 
+         		{
+         			System.out.print("   ");
+         			brano.stampaInfoBrano();
+         		}
+         	}
+         }
+
     }
 
 
