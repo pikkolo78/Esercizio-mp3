@@ -90,7 +90,7 @@ public class ArchivioMp3
     	}
     	
     }
-    public void stampaInfoCd()
+    public void stampaInfoCd()                                              
     {
          for ( Cd infoCd: cd) 
          {
@@ -106,6 +106,27 @@ public class ArchivioMp3
          }
 
     }
+    public void ricercaParolaBrani(String parola)
+    {
+      System.out.println("I brani trovati sono: ");
+      boolean branoTrovato=false;
+      for (Brano brano :brani ) 
+      {
+      
+        //if (brano.getNomeBrano().indexOf(parola) != -1 )
+         if (brano.getNomeBrano().toLowerCase().contains(parola.toLowerCase()))
+        {
+          System.out.println(brano.getNomeBrano());  
+          branoTrovato=true;
+        }
+       
+      }
+      if(!branoTrovato)
+      {
+        System.out.println("Nessun brano trovato");
+      }
+    }
+      
 
 
 
