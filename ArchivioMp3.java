@@ -50,6 +50,19 @@ public class ArchivioMp3
       	return genereMomentaneo;
       }
     }
+    public Cd cercaCd(String titoloCd)
+    {
+     Cd cdMomentaneo=null;
+      for ( Cd cd1: cd) 
+      {
+        if (cd1.getNomeCd().toLowerCase().equals(titoloCd.toLowerCase()) ) 
+        {
+          cdMomentaneo =cd1;
+        }
+
+      }
+      return cdMomentaneo; 
+    }
    
     public Cd aggiungiCd(String nomeCd,Genere genereCd,Artista artistaCd)
     {

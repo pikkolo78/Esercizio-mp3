@@ -40,7 +40,55 @@ public class ArchivioMain
         archivio.aggiungiNuovoBrano(107,"stella",cd2);
 
         //archivio.stampaInfoCd();
-        System.out.println("Digita la parola chiave:");
-        archivio.ricercaParolaBrani( input.nextLine());
-	}             
+        //System.out.println("Digita la parola chiave:");
+        //archivio.ricercaParolaBrani( input.nextLine());
+        String risposta;
+         do
+         {    
+           System.out.println("menu: ");
+           System.out.println("1. Stampa brani");
+           System.out.println("2. Aggiungi brano");
+           System.out.println("3. Cerca brano");
+           System.out.println("4. esci");
+           System.out.println("");
+           risposta=input.nextLine();
+           switch(risposta)
+           {
+                case "1": archivio.stampaInfoCd() ;break;
+                case "2": nuovoBrano(archivio);break;
+                case "3": System.out.println("Digita la parola chiave:");archivio.ricercaParolaBrani( input.nextLine());break;
+                case "4":break;
+                default : System.out.println("selezione errata");break;
+           }
+         }
+         while(!risposta.equals("4"));
+
+
+
+	}
+
+        private static void nuovoBrano(ArchivioMp3 archivio)
+        {   
+            Scanner input =new Scanner(System.in);
+            System.out.println("digita la durata:");
+            int durataBrano =Integer.parseInt(input.nextLine()) ; 
+            System.out.println("digita titolo brano:");
+            String titoloBrano=input.nextLine();
+            System.out.println("digita cd appartenenza");
+            String titolocd=input.nextLine();
+            Cd cd=archivio.cercaCd(titolocd);
+            if (cd == null) 
+            {
+               System.out.println("errore cd");     
+            }
+            else
+            {
+            archivio.aggiungiNuovoBrano(durataBrano,titoloBrano,cd);
+            }
+
+
+
+
+
+        }             
 }
